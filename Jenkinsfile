@@ -11,7 +11,7 @@ pipeline{
   stages{
     stage("拉取git仓库代码"){
       steps{
-        git credentialsId: 'github', url: 'https://github.com/wangmeng0812/wmhttp.git'
+        git 'https://github.com/wangmeng0812/wmhttp.git'
       }
     }
     stage("通过maven构建项目"){
