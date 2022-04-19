@@ -1,4 +1,4 @@
-//所有的脚本命令都放在pipeline中
+//所有的脚本命令都放在pipeline
 pipeline{
   //指定任务在哪个集群节点中执行
   agent any
