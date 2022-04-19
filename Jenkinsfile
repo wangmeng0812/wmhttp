@@ -1,4 +1,4 @@
-//所有的脚本命令都放在pipeline中
+//所有的脚本命令都放在pipeline的
 pipeline{
   //指定任务在哪个集群节点中执行
   agent any
@@ -11,7 +11,7 @@ pipeline{
   stages{
     stage("拉取git仓库代码"){
       steps{
-        git 'https://github.com/wangmeng0812/wmhttp.git'
+        git credentialsId: 'github', url: 'https://github.com/wangmeng0812/wmhttp.git'
       }
     }
     stage("通过maven构建项目"){
