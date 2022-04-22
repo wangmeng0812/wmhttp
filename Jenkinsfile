@@ -8,7 +8,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    jenkins: worker
+    jenkins:worker
 spec:
     container:
     - name:kaniko
