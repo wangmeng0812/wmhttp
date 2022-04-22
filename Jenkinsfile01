@@ -4,7 +4,6 @@ pipeline{
 agent {
   kubernetes {
     cloud 'kubernetes'
-    inheritFrom 'jnlp-slave'
     namespace 'default'
     yaml '''apiVersion: v1
 kind: Pod
