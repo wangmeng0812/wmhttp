@@ -16,10 +16,8 @@ agent {
       containers:
       - image: ubuntu
         name: ubuntu
-        command:
-        -sleep
-        args:
-        - 99999'''
+        command: ["/bin/sh","-c","sleep 9999"]
+     '''
         }
       }
 
