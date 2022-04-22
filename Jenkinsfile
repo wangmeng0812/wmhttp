@@ -1,9 +1,7 @@
-//所有的脚本命令都放在pipeline的
-pipeline{
-  //指定任务在哪个集群节点中执行
+pipeline {
   agent {
-    kubernetes{
-        yaml """
+    kubernetes {
+      yaml '''
 apiVersion: v1
 kind: Pod
 metadata:
@@ -26,29 +24,22 @@ spec:
     - name: docker-secret
       secret:
         secretName: docker-secret
-"""
+'''
     }
 
   }
-
-  //声明全局变量,方便后面使用
-  environment{
-    key = 'value'
-  }
-
-  stages{
-    stage("image build and push"){
-      steps{
-        container('kaniko') {
-            sh '/kaniko/executor -f `pwd`/Dockerfile -c `pwd`/src --cache=true \
-            --destination=core.harbor.domain/wmhttp/my-nginx:tag \
-                        --insecure \
-                        --skip-tls-verify  \
-                        -v=debug'
+  stages {
+    stage('image build and push') {
+      steps {
+        container(name: 'kaniko') {
+          sh '/kaniko/executor -f `pwd`/Dockerfile -c `pwd`/src --cache=true             --destination=core.harbor.domain/wmhttp/my-nginx:tag                         --insecure                         --skip-tls-verify                          -v=debug'
         }
+
       }
     }
 
-
+  }
+  environment {
+    key = 'value'
   }
 }
