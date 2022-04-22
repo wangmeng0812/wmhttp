@@ -5,15 +5,17 @@ agent {
   kubernetes {
     cloud 'txy-kubernetes'
     namespace 'default'
-    yaml '''apiVersion: v1
-kind: Pod
-metadata:
-  labels:
-    jenkins:worker
-spec:
-    container:
-    - name:kaniko
-      image:ubuntu'''
+    yaml '''
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      labels:
+        name: ubuntu
+      name: ubuntu-0
+    spec:
+      containers:
+      - image: ubuntu
+        name: ubuntu'''
         }
       }
 
