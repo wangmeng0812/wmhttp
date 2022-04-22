@@ -1,4 +1,3 @@
-import java.text.SimpleDateFormat;
 //所有的脚本命令都放在pipeline的
 pipeline{
   //指定任务在哪个集群节点中执行
@@ -26,7 +25,7 @@ spec:
     volumes:
     - name: docker-secret
       secret:
-        secretName: harbor-secret
+        secretName: docker-secret
 """
     }
 
@@ -41,8 +40,7 @@ spec:
     stage("image build and push"){
       steps{
         container('kaniko') {
-            sh '/kaniko/executor --context=git://github.com/wangmeng0812/wmhttp.git \
-            -f `pwd`/Dockerfile -c `pwd`/src --cache=true \
+            sh '/kaniko/executor -f `pwd`/Dockerfile -c `pwd`/src --cache=true \
             --destination=core.harbor.domain/wmhttp/my-nginx:tag \
                         --insecure \
                         --skip-tls-verify  \
