@@ -25,7 +25,7 @@ agent {
   stages{
     stage("image build and push"){
       steps{
-      container('kaniko') {
+      container('ubuntu') {
        echo "hello"
        }
         }
