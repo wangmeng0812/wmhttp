@@ -13,20 +13,7 @@ metadata:
 spec:
     container:
     - name:kaniko
-      image:gcr.io/kaniko-project/executor:debug
-      command:
-      -sleep
-      args:
-      - 99999
-      tty: true
-      volumeMounts:
-         - name: docker-secret
-           mountPath: /kaniko/.docker
-           readOnly: true
-    volumes:
-    - name: docker-secret
-      secret:
-        secretName: harbor-secret'''
+      image:ubuntu'''
         }
       }
 
@@ -34,7 +21,7 @@ spec:
   stages{
     stage("image build and push"){
       steps{
-      container('jnlp-slave') {
+      container('kaniko') {
        echo "hello"
        }
         }
