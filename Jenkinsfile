@@ -25,9 +25,9 @@ agent {
   stages{
     stage("image build and push"){
       steps{
-      container('ubuntu') {
+
        echo "hello"
-       }
+
         }
       }
     }
