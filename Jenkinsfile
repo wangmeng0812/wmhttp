@@ -1,10 +1,12 @@
 //所有的脚本命令都放在pipeline的
 pipeline{
   //指定任务在哪个集群节点中执行
-  agent {
-    kubernetes{
-        yaml """
-apiVersion: v1
+agent {
+  kubernetes {
+    cloud 'kubernetes'
+    inheritFrom 'jnlp-slave'
+    namespace 'default'
+    yaml '''apiVersion: v1
 kind: Pod
 metadata:
   labels:
@@ -25,9 +27,10 @@ spec:
     volumes:
     - name: docker-secret
       secret:
-        secretName: harbor-secret
-"""
-    }
+        secretName: harbor-secret'''
+  }
+}
+
 
   }
 
