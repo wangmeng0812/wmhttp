@@ -25,7 +25,7 @@ spec:
     volumes:
     - name: docker-secret
       secret:
-        secretName: docker-secret
+        secretName: harbor-secret
 """
     }
 
@@ -40,7 +40,8 @@ spec:
     stage("image build and push"){
       steps{
         container('kaniko') {
-            sh '/kaniko/executor -f `pwd`/Dockerfile -c `pwd`/src --cache=true \
+            sh '/kaniko/executor --context=git://github.com/wangmeng0812/wmhttp.git \
+            -f `pwd`/Dockerfile -c `pwd`/src --cache=true \
             --destination=core.harbor.domain/wmhttp/my-nginx:tag \
                         --insecure \
                         --skip-tls-verify  \
