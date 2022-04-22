@@ -32,8 +32,6 @@ spec:
 }
 
 
-  }
-
   //声明全局变量,方便后面使用
   environment{
     key = 'value'
@@ -52,7 +50,4 @@ spec:
         }
       }
     }
-
-
-  }
 }
