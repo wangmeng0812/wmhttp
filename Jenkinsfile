@@ -28,15 +28,8 @@ spec:
     - name: docker-secret
       secret:
         secretName: harbor-secret'''
-  }
-}
-
-
-  //声明全局变量,方便后面使用
-  environment{
-    key = 'value'
-  }
-
+         }
+      }
   stages{
     stage("image build and push"){
       steps{
@@ -50,4 +43,5 @@ spec:
         }
       }
     }
+  }
 }
