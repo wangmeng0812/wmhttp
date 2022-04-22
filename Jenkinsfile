@@ -15,7 +15,11 @@ agent {
     spec:
       containers:
       - image: ubuntu
-        name: ubuntu'''
+        name: ubuntu
+        command:
+        -sleep
+        args:
+        - 99999'''
         }
       }
 
