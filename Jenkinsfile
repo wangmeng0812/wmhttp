@@ -3,7 +3,7 @@ pipeline{
   //指定任务在哪个集群节点中执行
 agent {
   kubernetes {
-    cloud 'kubernetes'
+    cloud 'txy-kubernetes'
     namespace 'default'
     yaml '''apiVersion: v1
 kind: Pod
